@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { format, differenceInMinutes, isAfter } from "date-fns";
 import { CalendarIcon, Filter } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -32,17 +32,22 @@ type Logs = {
 };
 
 export default function TimeTrackingTable({ logs }: { logs: Logs[] }) {
+  const [data, setData] = useState<Logs[]>(logs);
   const [callTime, setCallTime] = useState("19:30");
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [penaltyRate, setPenaltyRate] = useState(1);
 
+  useEffect(() => {
+    setData(logs);
+  }, [logs]);
+
   const filteredData = date
-    ? logs.filter(
+    ? data.filter(
         (item) =>
           format(new Date(item.time_in), "yyyy-MM-dd") ===
           format(date, "yyyy-MM-dd")
       )
-    : logs;
+    : data;
 
   // Calculate minutes late and total penalty
   const processedData = filteredData.map((item) => {

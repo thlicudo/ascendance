@@ -6,7 +6,7 @@ export default async function Exec() {
   const logs = await db
     .select()
     .from(timeLogsTable)
-    .orderBy(timeLogsTable.time_in);
+    .orderBy(timeLogsTable.name);
 
   return <TimeTrackingTable logs={logs} />;
 }
