@@ -87,7 +87,7 @@ export default function TimeInForm() {
                       <Input
                         {...field}
                         placeholder="Enter your full name"
-                        className="text-sm"
+                        className="text-sm text-center"
                       />
                     </FormControl>
                     <FormMessage className="text-sm" />
