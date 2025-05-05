@@ -1,12 +1,15 @@
 import TimeTrackingTable from "@/components/time-tracking-table";
-import { db } from "@/db";
-import { timeLogsTable } from "@/db/schema";
 
 export default async function Exec() {
-  const logs = await db
-    .select()
-    .from(timeLogsTable)
-    .orderBy(timeLogsTable.name);
+  const res = await fetch(`${process.env.API_BASE_URL}/api/logs`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch logs");
+  }
+
+  const logs = await res.json();
 
   return <TimeTrackingTable logs={logs} />;
 }

@@ -41,6 +41,10 @@ export default function TimeTrackingTable({ logs }: { logs: Logs[] }) {
     setData(logs);
   }, [logs]);
 
+  useEffect(() => {
+    console.log("Data:", data);
+  }, [data]);
+
   const filteredData = date
     ? data.filter(
         (item) =>
@@ -123,7 +127,7 @@ export default function TimeTrackingTable({ logs }: { logs: Logs[] }) {
 
             <div className="space-y-2">
               <Label htmlFor="penaltyRate" className="font-bold">
-                Penalty Rate (Php/minute)
+                Penalty Rate (PHP/minute)
               </Label>
               <Input
                 id="penaltyRate"
