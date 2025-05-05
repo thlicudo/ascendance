@@ -69,7 +69,7 @@ export default function TimeInForm() {
     <div className="flex flex-col items-center justify-center w-full">
       <Image src="/bg-logo.png" height={120} width={250} alt="logo" />
 
-      <Card className="w-[80%]">
+      <Card className="w-[80%] md:w-[30%]">
         <CardContent className="text-center space-y-4">
           <h1 className="font-bold">You are...?</h1>
           {/* Form handling */}
